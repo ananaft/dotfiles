@@ -9,3 +9,6 @@ texlive-most
 texlive-lang
 cmatrix
 neofetch
+keychain
+mixxx
+caffeine
