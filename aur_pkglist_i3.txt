@@ -1,0 +1,3 @@
+gruvbox-material-gtk-theme-git
+gruvbox-material-icon-theme-git
+qt5-styleplugins
