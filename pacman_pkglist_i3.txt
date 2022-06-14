@@ -1,0 +1,11 @@
+firefox
+emacs
+nextcloud
+nextcloud-client
+r
+yay
+okular
+texlive-most
+texlive-lang
+cmatrix
+neofetch
