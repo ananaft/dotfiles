@@ -221,6 +221,7 @@
   :diminish
   )
 (global-undo-tree-mode)
+(setq undo-tree-auto-save-history nil)
 
 ;; Elpy
 (use-package elpy
