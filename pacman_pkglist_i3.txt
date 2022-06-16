@@ -12,3 +12,4 @@ neofetch
 keychain
 mixxx
 caffeine
+jq
