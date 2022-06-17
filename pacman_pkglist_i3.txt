@@ -3,6 +3,7 @@ emacs
 nextcloud
 nextcloud-client
 r
+tk
 yay
 okular
 texlive-most
