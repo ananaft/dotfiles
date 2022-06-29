@@ -130,6 +130,14 @@
     ("M-9" . winum-select-window-9))
     )
 
+(use-package buffer-move
+  :bind
+  ("M-<up>" . buf-move-up)
+  ("M-<down>" . buf-move-down)
+  ("M-<left>" . buf-move-left)
+  ("M-<right>" . buf-move-right)
+  )
+
 ;; Ibuffer
 (use-package ibuffer
     :bind ("C-x C-b" . ibuffer)
