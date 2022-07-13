@@ -78,7 +78,7 @@
         ("C-d" . ivy-switch-buffer-kill))
     :config
     (ivy-mode 1))
-(diminish 'ivy-mode)
+
 (use-package swiper
     :bind (("C-s" . swiper))
     )
@@ -91,6 +91,7 @@
 (use-package ivy-rich
   :init
   (ivy-rich-mode 1))  ;; More information within ivy
+(diminish 'ivy-mode)
 
 (use-package rainbow-delimiters
     :hook (prog-mode . rainbow-delimiters-mode))
