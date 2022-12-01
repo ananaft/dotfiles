@@ -236,6 +236,16 @@
 (use-package elpy
   :init
   (elpy-enable)
+  :hook
+  :hook
+  (inferior-python-mode-hook . (lambda () (set (make-local-variable
+						'eldoc-documentation-function)
+                                               'elpy-eldoc-documentation)
+                                 (eldoc-mode)))
+  
+  :bind
+  (:map inferior-python-mode-map
+        ("C-c C-d" . elpy-doc))
   )
 (setq elpy-get-info-from-shell t)
 (setq python-indent-guess-indent-offset nil)
