@@ -90,7 +90,8 @@
 (setq ivy-use-selectable-prompt t)  ;; Make direct input selectable
 (use-package ivy-rich
   :init
-  (ivy-rich-mode 1))  ;; More information within ivy
+  (ivy-rich-mode 1)
+  )  ;; More information within ivy
 (diminish 'ivy-mode)
 
 (use-package rainbow-delimiters
@@ -237,7 +238,6 @@
   :init
   (elpy-enable)
   :hook
-  :hook
   (inferior-python-mode-hook . (lambda () (set (make-local-variable
 						'eldoc-documentation-function)
                                                'elpy-eldoc-documentation)
@@ -263,7 +263,9 @@
 ;; Emacs Speaks Statistics
 (use-package ess
   :init
-  (require 'ess-site))
+  (require 'ess-site)
+  :config
+  (setq ess-use-flymake nil))
 
 ;; Magit
 (use-package magit
@@ -317,6 +319,7 @@
     ("\\.md$" "okular")
     ("\\.docx$" "libreoffice")
     ("\\.odf$" "libreoffice")
+    ("\\.xls.?$" "libreoffice")
     ("\\.ipynb$" "jupyter notebook")
     ))
 
@@ -379,7 +382,9 @@
      (output-dvi "xdvi")
      (output-pdf "Okular")
      (output-html "xdg-open")))
- '(package-selected-packages '(use-package)))
+ '(custom-safe-themes
+   '("7661b762556018a44a29477b84757994d8386d6edee909409fabe0631952dad9" "83e0376b5df8d6a3fbdfffb9fb0e8cf41a11799d9471293a810deb7586c131e6" "6b5c518d1c250a8ce17463b7e435e9e20faa84f3f7defba8b579d4f5925f60c1" "d14f3df28603e9517eb8fb7518b662d653b25b26e83bd8e129acea042b774298" "4eb6fa2ee436e943b168a0cd8eab11afc0752aebb5d974bba2b2ddc8910fca8f" "78c4238956c3000f977300c8a079a3a8a8d4d9fee2e68bad91123b58a4aa8588" default))
+ '(package-selected-packages '(buffer-move use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
