@@ -190,6 +190,7 @@ bindsym $mod+udiaeresis move workspace to output right
 assign [class="firefox"] $ws1
 assign [class="Emacs"] $ws2
 assign [class="okular"] $ws3
+assign [class="Zathura"] $ws3
 assign [class="libreoffice"] $ws3
 for_window [class="libreoffice-writer"] move to workspace $ws3
 for_window [class="libreoffice-calc"] move to workspace $ws3
