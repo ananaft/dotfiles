@@ -233,6 +233,11 @@
 (global-undo-tree-mode)
 (setq undo-tree-auto-save-history nil)
 
+;; Python
+(setq py-install-directory "/home/lukas/.emacs.d/elpa/python-mode-20230515.722/")
+(add-to-list 'load-path py-install-directory)
+(require 'python-mode)
+
 ;; Elpy
 (use-package elpy
   :init
