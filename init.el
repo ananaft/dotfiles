@@ -320,6 +320,8 @@
 (require 'dired-x)
 (setq dired-guess-shell-alist-user
       '(
+	("\\.[Jj][Pp][Ee]?[Gg]$" "viewnior")
+	("\\.[Pp][Nn][Gg]$" "viewnior")
 	("\\.pdf$" "zathura")
 	("\\.md$" "okular")
 	("\\.docx$" "libreoffice")
