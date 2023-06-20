@@ -324,7 +324,7 @@
 	("\\.[Pp][Nn][Gg]$" "viewnior")
 	("\\.pdf$" "zathura")
 	("\\.md$" "okular")
-	("\\.docx$" "libreoffice")
+	("\\.docx?$" "libreoffice")
 	("\\.odf$" "libreoffice")
 	("\\.xls.?$" "libreoffice")
 	("\\.ipynb$" "jupyter notebook")
