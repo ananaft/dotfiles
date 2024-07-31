@@ -240,6 +240,14 @@
   :hook ((python-ts-mode . eglot-ensure)
 	 (python-ts-mode . company-mode))
   )
+;; Python virtual environments
+(use-package auto-virtualenvwrapper
+  :config
+  (add-hook 'python-base-mode-hook #'auto-virtualenvwrapper-activate)
+  )
+(use-package pet
+  :config
+  (add-hook 'python-base-mode-hook 'pet-mode -10))
 
 ;; Auto-completion
 (use-package company
