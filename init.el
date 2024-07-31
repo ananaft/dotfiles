@@ -152,27 +152,28 @@
            ("code" (or
             (mode . emacs-lisp-mode)
             (mode . cperl-mode)
-                        (mode . c-mode)
-                        (mode . java-mode)
-                        (mode . idl-mode)
-                        (mode . web-mode)
-                        (mode . lisp-mode)
-                        (mode . js2-mode)
-                        (mode . c++-mode)
-                        (mode . lua-mode)
-                        (mode . cmake-mode)
-                        (mode . ruby-mode)
-                        (mode . scss-mode)
-                        (mode . css-mode)
-                        (mode . objc-mode)
-                        (mode . sql-mode)
-                        (mode . python-mode)
-                        (mode . php-mode)
-                        (mode . sh-mode)
-                        (mode . json-mode)
-                        (mode . scala-mode)
-                        (mode . go-mode)
-                        (mode . erlang-mode)
+            (mode . c-mode)
+            (mode . java-mode)
+            (mode . idl-mode)
+            (mode . web-mode)
+            (mode . lisp-mode)
+            (mode . js2-mode)
+            (mode . c++-mode)
+            (mode . lua-mode)
+            (mode . cmake-mode)
+            (mode . ruby-mode)
+            (mode . scss-mode)
+            (mode . css-mode)
+            (mode . objc-mode)
+            (mode . sql-mode)
+            (mode . python-mode)
+            (mode . php-mode)
+            (mode . sh-mode)
+            (mode . json-mode)
+            (mode . scala-mode)
+            (mode . go-mode)
+	    (mode . kotlin-mode)
+            (mode . erlang-mode)
             (mode . ess-r-mode)
             ))
            ("html/xml" (or
@@ -234,29 +235,11 @@
 (setq undo-tree-auto-save-history nil)
 
 ;; Python
-(setq py-install-directory "/home/lukas/.emacs.d/elpa/python-mode-20230515.722/")
-(add-to-list 'load-path py-install-directory)
-(require 'python-mode)
-
-;; Elpy
-(use-package elpy
-  :init
-  (elpy-enable)
-  :hook
-  (inferior-python-mode-hook . (lambda () (set (make-local-variable
-						'eldoc-documentation-function)
-                                               'elpy-eldoc-documentation)
-                                 (eldoc-mode)))
-  
-  :bind
-  (:map inferior-python-mode-map
-        ("C-c C-d" . elpy-doc))
+(use-package python
+  :mode ("\\.py\\'" . python-ts-mode)
+  :hook ((python-ts-mode . eglot-ensure)
+	 (python-ts-mode . company-mode))
   )
-(setq elpy-get-info-from-shell t)
-(setq python-indent-guess-indent-offset nil)
-(setq python-indent-offset 4)
-(add-hook 'elpy-mode-hook
-	  (lambda () (flymake-mode-off)))
 
 ;; Auto-completion
 (use-package company
@@ -284,6 +267,16 @@
 ;; AucTeX
 (use-package auctex
   :defer t)
+
+;; JavaScript
+(use-package js2-mode
+  :mode "\\.js\\'"
+  :config
+  (setq js2-basic-offset 2)
+  )
+
+;; Kotlin
+(use-package kotlin-mode)
 
 ;;;;;;;;;;;;;;;;;
 ;; Adjustments ;;
@@ -391,7 +384,8 @@
      (output-html "xdg-open")))
  '(custom-safe-themes
    '("7661b762556018a44a29477b84757994d8386d6edee909409fabe0631952dad9" "83e0376b5df8d6a3fbdfffb9fb0e8cf41a11799d9471293a810deb7586c131e6" "6b5c518d1c250a8ce17463b7e435e9e20faa84f3f7defba8b579d4f5925f60c1" "d14f3df28603e9517eb8fb7518b662d653b25b26e83bd8e129acea042b774298" "4eb6fa2ee436e943b168a0cd8eab11afc0752aebb5d974bba2b2ddc8910fca8f" "78c4238956c3000f977300c8a079a3a8a8d4d9fee2e68bad91123b58a4aa8588" default))
- '(package-selected-packages '(buffer-move use-package)))
+ '(package-selected-packages
+   '(auctex yaml-mode company-jedi sqlite3 python-mode buffer-move use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
