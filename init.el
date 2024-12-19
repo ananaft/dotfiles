@@ -166,7 +166,8 @@
             (mode . css-mode)
             (mode . objc-mode)
             (mode . sql-mode)
-            (mode . python-mode)
+	    (mode . python-mode)
+            (mode . python-ts-mode)
             (mode . php-mode)
             (mode . sh-mode)
             (mode . json-mode)
@@ -175,6 +176,7 @@
 	    (mode . kotlin-mode)
             (mode . erlang-mode)
             (mode . ess-r-mode)
+	    (mode . typescript-ts-mode)
             ))
            ("html/xml" (or
                 (mode . html-mode)
@@ -246,10 +248,12 @@
   (add-hook 'python-base-mode-hook #'auto-virtualenvwrapper-activate)
   )
 (use-package pet
+  :diminish
   :config
   (add-hook 'python-base-mode-hook 'pet-mode -10))
 
 ;; Auto-completion
+(yas-global-mode)
 (use-package company
   :diminish
   :config
@@ -276,15 +280,57 @@
 (use-package auctex
   :defer t)
 
-;; JavaScript
-(use-package js2-mode
-  :mode "\\.js\\'"
-  :config
-  (setq js2-basic-offset 2)
-  )
-
 ;; Kotlin
 (use-package kotlin-mode)
+
+;; Flymake
+(use-package flymake
+  :diminish
+  )
+
+;; Eldoc
+(use-package eldoc
+  :diminish
+  )
+
+;; Web Mode
+(use-package web-mode
+  :ensure t
+  :mode (("\\.js\\'" . web-mode)
+	 ("\\.jsx\\'" . web-mode)
+	 ("\\.ts\\'" . web-mode)
+	 ("\\.tsx\\'" . web-mode)
+	 ("\\.html\\'" . web-mode))
+  :config (setq web-mode-code-indent-offset 2)
+  :commands web-mode
+  )
+
+
+;; LSP
+(use-package lsp-mode
+  :ensure t
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :hook ((web-mode . lsp)
+         (lsp-mode . lsp-enable-which-key-integration))
+  :config
+  (setq lsp-log-io nil)
+  (setq lsp-restart 'auto-restart)
+  :commands lsp)
+(use-package lsp-ui
+  :config
+  (setq lsp-ui-sideline-show-diagnostics t)
+  (setq lsp-ui-sideline-show-hover t)
+  (setq lsp-ui-sideline-show-code-actions t)
+  :commands lsp-ui-mode
+  )
+;; Ivy support
+(use-package lsp-ivy
+  :commands lsp-ivy-workspace-symbol
+  )
+(use-package lsp-treemacs
+  :commands lsp-treemacs-errors-list
+  )
 
 ;;;;;;;;;;;;;;;;;
 ;; Adjustments ;;
@@ -295,8 +341,8 @@
 
 ;; Dired improvements
 (add-hook 'dired-mode-hook 'auto-revert-mode)
-(diminish 'auto-revert-mode)
 (setq auto-revert-verbose nil)
+(diminish 'auto-revert-mode)
 (setq dired-deletion-confirmer #'y-or-n-p)
 (put 'dired-find-alternate-file 'disabled nil)
 (add-hook 'dired-mode-hook
